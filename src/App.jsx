@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(current())
-  }, [])
+  }, [dispatch])
 
   return (
     <div>
