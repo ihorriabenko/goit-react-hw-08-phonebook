@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "redux/auth/auth-operations";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/auth/auth-operations';
+import { Button, TextField } from '@mui/material';
+import s from './login-form.module.scss'
 
 const LoginForm = () => {
   const [user, setUser] = useState({
@@ -13,7 +15,7 @@ const LoginForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(login(user))
+    dispatch(login(user));
 
     setUser({
       email: '',
@@ -31,14 +33,29 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={s.form} onSubmit={handleSubmit}>
       <label>
-        email
-        <input onChange={handleChange} type="text" name="email" value={user.email} placeholder="email" required />
+        <TextField
+        sx={{ mb: 2 }}
+        size="small"
+          helperText="Please enter your email"
+          id="email"
+          label="Email"
+          onChange={handleChange}
+          type="text"
+          name="email"
+          value={user.email}
+          placeholder="email"
+          required
+        />
       </label>
       <label>
-        password
-        <input
+        <TextField
+        sx={{ mb: 2 }}
+        size="small"
+          helperText="Please enter your password"
+          id="password"
+          label="Password"
           onChange={handleChange}
           type="password"
           name="password"
@@ -47,7 +64,9 @@ const LoginForm = () => {
           required
         />
       </label>
-      <button>Log in</button>
+      <Button variant="contained" type="submit">
+        Log in
+      </Button>
     </form>
   );
 };

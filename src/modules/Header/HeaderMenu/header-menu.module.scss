@@ -11,10 +11,16 @@
 .link {
   display: inline-block;
   text-decoration: none;
-  color: #2f4f4f;
+  color: black;
+  transition: 250ms;
 
   &Active {
     composes: link;
-    color: black;
+    color: #2196f3;
+  }
+
+  &:hover,
+  &:focus {
+    color: #2196f3;
   }
 }

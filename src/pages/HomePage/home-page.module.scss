@@ -1,0 +1,37 @@
+.title {
+  text-align: center;
+}
+
+.inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondary {
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  margin: 0 150px;
+  font-size: 30px;
+  color: black;
+  transition: 250ms;
+
+  &:hover,
+  &:focus {
+    color: #2196f3;
+  }
+}
