@@ -1,5 +1,4 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import logger from 'redux-logger';
 import rootReducer from './root-reducer';
 import {
   persistStore,
@@ -11,7 +10,6 @@ import {
   REGISTER,
 } from 'redux-persist'
 
-// const middleware = [...getDefaultMiddleware(), logger];
 
 export const store = configureStore({
   reducer: rootReducer,
