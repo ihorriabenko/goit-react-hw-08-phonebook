@@ -1,17 +1,20 @@
-import Section from 'components/Section';
-import Form from './components/Form';
-import Users from './components/Users';
+import Header from 'modules/Header';
+import Routes from './Routes'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { current } from 'redux/auth/auth-operations';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(current())
+  }, [])
 
   return (
     <div>
-      <Section title={'Phonebook'}>
-        <Form />
-      </Section>
-      <Section title={'Contancts'}>
-        <Users />
-      </Section>
+    <Header />
+      <Routes />
     </div>
   );
 };

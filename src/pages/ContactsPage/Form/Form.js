@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNewContact } from 'redux/operations';
+import { addNewContact } from 'redux/contacts/contacts-operations';
 
 import s from './form.module.css';
 
 const Form = () => {
   const [user, setUser] = useState({
     name: '',
-    phone: '',
+    number: '',
   });
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const Form = () => {
 
     setUser({
       name: '',
-      phone: '',
+      number: '',
     });
   };
 
@@ -47,12 +47,12 @@ const Form = () => {
         />
       </label>
       <label className={s.label}>
-        Phone
+        Number
         <input
           className={s.inputt}
-          value={user.phone}
+          value={user.number}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

@@ -1,14 +1,26 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
-import counterSlice from './reducer';
+// import logger from 'redux-logger';
+import rootReducer from './root-reducer';
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
 
-const middleware = [...getDefaultMiddleware(), logger];
+// const middleware = [...getDefaultMiddleware(), logger];
 
-const store = configureStore({
-  reducer: {
-    contacts: counterSlice,
-  },
-  middleware,
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
-export default store;
+export const persistor = persistStore(store);
