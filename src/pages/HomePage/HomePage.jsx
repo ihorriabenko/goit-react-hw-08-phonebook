@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import useIsLogin from 'shared/hooks/useIsLogin';
 import s from './home-page.module.scss';
 
 const HomePage = () => {
+  const isLogin = useIsLogin();
+
   return (
     <div className="container">
       <div className={s.inner}>
@@ -12,12 +15,8 @@ const HomePage = () => {
         </h1>
       </div>
       <div className={s.secondary}>
-        <NavLink className={s.link} to="/register">
-          Register
-        </NavLink>
-        <NavLink className={s.link} to="/login">
-          Login
-        </NavLink>
+      {!isLogin && <NavLink className={s.link} to="/register">Register</NavLink>}
+       {!isLogin && <NavLink className={s.link} to="/login">Login</NavLink>}
       </div>
     </div>
   );
